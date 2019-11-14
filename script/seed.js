@@ -1,18 +1,49 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {Venue} = require('../server/db/models')
+const moment = require('moment')
+moment().format()
+
+const ranges = [
+  [new Date(Date.UTC(2020, 5, 23)), new Date(Date.UTC(2020, 5, 25))],
+  [new Date(Date.UTC(2019, 11, 23)), new Date(Date.UTC(2019, 11, 24))],
+  [new Date(Date.UTC(2020, 2, 4)), new Date(Date.UTC(2020, 2, 5))],
+  [new Date(Date.UTC(2020, 6, 8)), new Date(Date.UTC(2020, 8, 10))],
+  [new Date(Date.UTC(2020, 9, 23)), new Date(Date.UTC(2020, 9, 24))],
+  [new Date(Date.UTC(2020, 10, 3)), new Date(Date.UTC(2020, 10, 5))],
+  [new Date(Date.UTC(2020, 3, 12)), new Date(Date.UTC(2020, 3, 15))],
+  [new Date(Date.UTC(2020, 7, 9)), new Date(Date.UTC(2020, 7, 10))],
+  [new Date(Date.UTC(2020, 9, 5)), new Date(Date.UTC(2020, 9, 6))]
+]
+
+console.log(moment('2016-01-01T23:35:01'))
+console.log(ranges)
+
+const venues = [
+  {
+    name: 'Grand Ballroom',
+    booked: [ranges[0], ranges[1], ranges[2]],
+    maxcapacity: '400'
+  },
+  {
+    name: 'Renaissance Room',
+    booked: [ranges[1], ranges[4], ranges[5], ranges[6]],
+    maxcapacity: '180'
+  }
+]
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
-  const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
-  ])
+  await Promise.all(
+    venues.map(venue => {
+      return Venue.create(venue)
+    })
+  )
 
-  console.log(`seeded ${users.length} users`)
+  // console.log(`seeded ${venues.length} users`)
   console.log(`seeded successfully`)
 }
 
