@@ -17,9 +17,6 @@ const ranges = [
   [new Date(Date.UTC(2020, 9, 5)), new Date(Date.UTC(2020, 9, 6))]
 ]
 
-console.log(moment('2016-01-01T23:35:01'))
-console.log(ranges)
-
 const venues = [
   {
     name: 'Grand Ballroom',
