@@ -15,6 +15,19 @@ const Venue = db.define('venue', {
   }
 })
 
+//  Venue.prototype.ifcontains = function (date){
+//   console.log("got to model instance function contains")
+//   this.booked.map(elem=>{
+//     if(elem.overlap(date)){
+//       return true
+//     }
+//    else{
+//      return false
+//    }
+//   }
+
+// )}
+
 module.exports = {Venue}
 
 // /**
