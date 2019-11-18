@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {Venue} = require('../server/db/models')
+const {Venue, Client, Event} = require('../server/db/models')
 const moment = require('moment')
 moment().format()
 
@@ -25,8 +25,48 @@ const venues = [
   },
   {
     name: 'Renaissance Room',
-    booked: [ranges[1], ranges[4], ranges[5], ranges[6]],
+    booked: [ranges[3], ranges[4], ranges[5]],
     maxcapacity: '180'
+  }
+]
+
+const clients = [
+  {
+    name: 'Mark',
+
+    eventId: 1
+  },
+  {
+    name: 'Ashley',
+
+    eventId: 1
+  },
+  {
+    name: 'Elizabeth',
+
+    eventId: 1
+  },
+  {
+    name: 'Tom',
+
+    eventId: 1
+  },
+  {
+    name: 'John',
+
+    eventId: 1
+  },
+  {
+    name: 'Emily',
+
+    eventId: 1
+  }
+]
+
+const events = [
+  {
+    name: 'wedding',
+    venueId: 1
   }
 ]
 
@@ -35,8 +75,14 @@ async function seed() {
   console.log('db synced!')
 
   await Promise.all(
+    clients.map(client => {
+      return Client.create(client)
+    }),
     venues.map(venue => {
       return Venue.create(venue)
+    }),
+    events.map(event => {
+      return Event.create(event)
     })
   )
 
