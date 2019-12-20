@@ -37,10 +37,11 @@ export const checkDate = date => async dispatch => {
       date: date,
       venueid: 1
     })
-    if (res.data === true) {
-      dispatch(dateIsAvailable())
-    } else {
+    console.log("res:", res)
+    if (res.data.notAvailable) {
       dispatch(dateIsNotAvailable())
+    } else {
+      dispatch(dateIsAvailable())
     }
     console.log('response in the thunk:', res)
   } catch (err) {

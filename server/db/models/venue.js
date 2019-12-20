@@ -8,7 +8,7 @@ const Venue = db.define('venue', {
     allownull: false
   },
   booked: {
-    type: Sequelize.ARRAY(Sequelize.RANGE(Sequelize.DATE))
+    type: Sequelize.ARRAY(Sequelize.DATE)
   },
   maxcapacity: {
     type: Sequelize.INTEGER
