@@ -1,7 +1,7 @@
 import React from "react";
 
 import Routes from "./routes";
-import Homepage from "./components";
+import Homepage  from "./components/homepage";
 
 const App = () => {
   return (
