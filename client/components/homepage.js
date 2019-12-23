@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Form, Calendar } from "./index";
 
-import Calendar from "./calendar";
-import Form from "./form";
-
-const Homepage = () => {
+export const Homepage = () => {
   return (
     <div>
       <div className="home">
@@ -19,4 +17,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+

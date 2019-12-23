@@ -8,25 +8,14 @@ const Venue = db.define('venue', {
     allownull: false
   },
   booked: {
-    type: Sequelize.ARRAY(Sequelize.DATE)
+    type: Sequelize.ARRAY(Sequelize.DATEONLY)
   },
   maxcapacity: {
     type: Sequelize.INTEGER
   }
 })
 
-//  Venue.prototype.ifcontains = function (date){
-//   console.log("got to model instance function contains")
-//   this.booked.map(elem=>{
-//     if(elem.overlap(date)){
-//       return true
-//     }
-//    else{
-//      return false
-//    }
-//   }
 
-// )}
 
 module.exports = {Venue}
 

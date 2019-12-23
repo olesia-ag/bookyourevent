@@ -12,14 +12,15 @@ router.post("/", async (req, res) => {
     Venue.findByPk(req.body.venueId).then(venue => {
       // console.log("venue booked at 0:", venue.booked[0]);
       console.log("venue booked:", venue.booked)
-      let myDate = moment(req.body.date).format("YYYY-MM-DD HH:mm:ss");
+      // let myDate = moment(req.body.date).format("YYYY-MM-DD HH:mm:ss");
+      let myDate = moment(req.body.date).format("YYYY-MM-DD");
       let newString = myDate.toString();
       console.log("my date", myDate);
       console.log("new string", newString);
       venue.sequelize.query(
         `UPDATE Venues SET booked = '{${[
           ...venue.booked,
-          [new Date(Date.UTC(2020, 5, 23)), new Date(Date.UTC(2020, 5, 25))]
+          myDate
         ]}}' WHERE id= ${venue.id}`
       );
 
