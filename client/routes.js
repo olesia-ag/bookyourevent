@@ -28,6 +28,7 @@ class Routes extends Component {
         <Route exact path="/bookform" component={BookForm} />
         <Route exact path="/" component={Homepage} />
 
+
         {/* Routes placed here are available to all visitors */}
         {/* <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} /> */}

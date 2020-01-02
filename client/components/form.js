@@ -1,36 +1,45 @@
-import React from 'react'
-import {checkDate} from '../store/calendar'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import React from "react";
+import { checkDate } from "../store/calendar";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import Routes from "../routes";
 
-let beenCalled = React.createContext(false)
+let beenCalled = React.createContext(false);
 
 class Form extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = {}
-    this.getAvailability = this.getAvailability.bind(this)
-    this.printAvailability = this.printAvailability.bind(this)
+    super(props);
+    this.state = {};
+    this.getAvailability = this.getAvailability.bind(this);
+    this.printAvailability = this.printAvailability.bind(this);
   }
 
   getAvailability() {
-    beenCalled = true
-    this.props.checkDate(this.props.selectedDate)
+    beenCalled = true;
+    this.props.checkDate(this.props.selectedDate);
   }
 
   printAvailability() {
     if (beenCalled === true) {
       if (this.props.isAvailable === true) {
-        return <p>is available! </p>
+        return (
+          <div>
+            <p>is available! </p>
+            <Link to="/bookform"><button type="submit">
+              secure the date
+            </button></Link>
+
+          </div>
+        );
       } else {
         return (
           <p>
             We're sorry, your date is not available, please select another date
           </p>
-        )
+        );
       }
     } else {
-      return <p>Please select a date to check!</p>
+      return <p>Please select a date to check!</p>;
     }
   }
   render() {
@@ -43,14 +52,14 @@ class Form extends React.Component {
         <button type="submit" onClick={this.getAvailability}>
           check availabity
         </button>
-        <Link to="/bookform">
+        {/* <Link to="/bookform">
           <button type="button">Secure the date</button>
-        </Link>
+        </Link> */}
         {/* <div>{this.props.checkedDate.toUTCString().slice(0, 16)}</div> */}
         <div>{this.printAvailability()}</div>
         {console.log(this.props.isAvailable)}
       </div>
-    )
+    );
   }
 }
 
@@ -60,13 +69,13 @@ const mapStateToProps = state => {
     selectedDate: state.calendar.selectedDate,
     isAvailable: state.calendar.isAvailable,
     checkedDate: state.calendar.checkedDate
-  }
-}
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
     checkDate: date => dispatch(checkDate(date))
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form)
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
