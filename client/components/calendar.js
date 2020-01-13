@@ -9,22 +9,8 @@ class Calendar extends React.Component {
     selectedDate: new Date()
   };
 
-  // componentDidMount() {
-  //   console.log('state in the calendar:',this.state)
-  // }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.selectedDate !== this.state.selectedDate) {
-  //     // console.log(`cal Update ${this.state.selectedDate}`)
-  //     // console.log(`cal props in componentdidupdate $${this.props}`)
-  //   }
-  // }
-
   //will change the state if selected date is after today's date:
   onDateClick = day => {
-    console.log(day)
-    console.log(new Date())
-    console.log(day >= new Date())
     if (day > new Date()) {
       this.setState({
         selectedDate: day,
@@ -117,7 +103,7 @@ class Calendar extends React.Component {
             }}
           >
             <span className="number">{formattedDate}</span>
-            <span className="bg">{formattedDate}</span>
+            {/* <span className="bg">{formattedDate}</span> */}
           </div>
         );
         day = dateFns.addDays(day, 1);
