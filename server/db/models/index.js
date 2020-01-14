@@ -4,7 +4,7 @@ const {Client} = require('./client')
 
 
 
-Venue.hasMany(Event)
+Venue.hasMany(Event, {constraints: false})
 Venue.belongsTo(Event, {constraints: false})
 
 Client.hasMany(Event)
