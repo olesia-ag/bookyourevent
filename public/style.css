@@ -145,7 +145,7 @@ main {
 }
 
 .calendar .header {
-  text-transform: uppercase;
+  text-transform: none;
   font-weight: 700;
   font-size: 115%;
   padding: 1.5em 0;
@@ -158,9 +158,8 @@ main {
 }
 
 .calendar .header .icon:hover {
-  transform: scale(1.75);
+  opacity: 70%;
   transition: 0.25s ease-out;
-  color: var(--main-color);
 }
 
 .calendar .header .icon:first-of-type {
@@ -172,7 +171,7 @@ main {
 }
 
 .calendar .days {
-  text-transform: uppercase;
+  text-transform: none;
   font-weight: 400;
   color: var(--text-color-light);
   font-size: 70%;
@@ -197,7 +196,7 @@ main {
 
 .calendar .body .selected {
   border-left: 10px solid transparent;
-  border-image: linear-gradient(45deg, #1a8fff 0%, #53cbf1 40%);
+  border-image: linear-gradient(45deg, #666666 0%, #ffffff 40%);
   border-image-slice: 1;
 }
 

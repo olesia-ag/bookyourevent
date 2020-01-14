@@ -1,29 +1,47 @@
 const router = require('express').Router()
 const {Venue} = require('../db/models')
+const moment = require("moment");
+moment().format();
+
+// router.post('/isavailable', (req, res) => {
+//   Venue.findByPk(req.body.venueid).then(venue => {
+//     venue.booked.forEach(element => {
+//       let dateToFind = new Date(req.body.date)
+
+//       //code for checking range:
+//       if (dateToFind.getTime() === element[0].value.getTime()) {
+//         res.json({value: false})
+//       } else if (dateToFind.getTime() === element[1].value.getTime()) {
+//         res.send(false)
+//       } else if (
+//         dateToFind.getTime() > element[0].value.getTime() &&
+//         dateToFind.getTime() < element[1].value.getTime()
+//       ) {
+//         res.send(false)
+//       } else {
+//         res.send(true)
+//       }
+//     })
+//   })
+// })
 
 router.post('/isavailable', (req, res) => {
+  let dateToFind = moment(req.body.date).format("YYYY-MM-DD")
   Venue.findByPk(req.body.venueid).then(venue => {
     venue.booked.forEach(element => {
-      let dateToFind = new Date(req.body.date)
-
-      //code for checking range:
-      if (dateToFind.getTime() === element[0].value.getTime()) {
-        res.json({value: false})
-      } else if (dateToFind.getTime() === element[1].value.getTime()) {
-        res.send(false)
-      } else if (
-        dateToFind.getTime() > element[0].value.getTime() &&
-        dateToFind.getTime() < element[1].value.getTime()
-      ) {
-        res.send(false)
-      } else {
-        res.send(true)
+      element=moment(element).format("YYYY-MM-DD")
+//if finds a match, send 'notAvailable: true' on response.data, if match is not found, notAvailable will not exist
+      if (dateToFind=== element) {
+        console.log('match', element)
+        res.json({notAvailable: true})
+      }  else {
+        console.log('nomatch', element)
+        res.status(200).json({request:'ok'})
       }
     })
   })
 })
 
-// router.post('/event', (req, res) => {})
 
 router.get('/', async (req, res, next) => {
   try {
