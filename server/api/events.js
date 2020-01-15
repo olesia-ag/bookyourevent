@@ -18,9 +18,8 @@ router.post("/", async (req, res) => {
           myDate
         ]}}' WHERE id= ${venue.id}`
       );
-      Venue.findByPk(req.body.venueid).then(ven => {
-
-        console.log("venue booked after query:", ven.booked)})
+      // Venue.findByPk(req.body.venueid).then(ven => {
+      //   console.log("venue booked after query:", ven.booked)})
 
 
     });

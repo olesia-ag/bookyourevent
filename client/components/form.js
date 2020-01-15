@@ -5,7 +5,7 @@ import { Link, withRouter } from "react-router-dom";
 
 
 
-let beenCalled = React.createContext(false);
+
 
 class Form extends React.Component {
   constructor(props) {
@@ -15,36 +15,40 @@ class Form extends React.Component {
     this.printAvailability = this.printAvailability.bind(this);
   }
 
-  getAvailability() {
-    beenCalled = true;
-    this.props.checkDate(this.props.selectedDate);
-  }
 
   printAvailability() {
     console.log("print availability was called");
-    if (beenCalled === true) {
       if (this.props.isAvailable === true) {
         return (
           <div>
-            <div>{this.props.checkedDate.toUTCString().slice(0, 16)}</div>
+            <div>{this.props.checkedDate.toUTCString().slice(5, 16)}</div>
             <p>is available! </p>
             <Link to="/bookform">
               <button type="submit">book the date</button>
             </Link>
           </div>
         );
-      } else {
+      } else if(this.props.isAvailable === false){
         return (
           <p>
-            We're sorry, your date is not available, please select another date
+            We're sorry, {this.props.checkedDate.toUTCString().slice(5, 16)} is not available, please select another date
           </p>
         );
       }
-    } else {
+     else {
       return <p>Please select a date to check!</p>;
     }
   }
+
+
+  getAvailability() {
+
+    this.props.checkDate(this.props.selectedDate);
+    this.printAvailability()
+  }
+
   render() {
+    console.log("checked date", this.props.checkedDate)
     return (
       <div>
         <h4>Please pick a date and click 'check availability'</h4>

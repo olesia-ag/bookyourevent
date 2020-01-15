@@ -9,7 +9,7 @@ import {
 } from "./constants";
 
 const initialState = {
-  isAvailable: false,
+  isAvailable: -1,
   currentMonth: new Date(),
   selectedDate: new Date(),
   checkedDate: new Date()
@@ -56,10 +56,16 @@ export default function(state = initialState, action) {
     case DATE_IS_AVAILABLE:
       return {
         ...state,
-        ...{ isAvailable: action.value, checkedDate: state.selectedDate }
+        isAvailable: action.value,
+        checkedDate: state.selectedDate
       };
+
     case DATE_IS_NOT_AVAILABLE:
-      return { ...state, isAvailable: action.value };
+      return {
+        ...state,
+        isAvailable: action.value,
+        checkedDate: state.selectedDate
+      };
     case GET_DATE:
       return {
         ...state,

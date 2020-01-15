@@ -30,15 +30,18 @@ router.post('/isavailable', (req, res) => {
   Venue.findByPk(req.body.venueid).then(venue => {
     venue.booked.forEach(element => {
       element=moment(element).format("YYYY-MM-DD")
+      console.log("element", element)
 //if finds a match, send 'notAvailable: true' on response.data, if match is not found, notAvailable will not exist
       if (dateToFind=== element) {
         console.log('match', element)
         res.json({notAvailable: true})
-      }  else {
-        console.log('nomatch', element)
-        res.status(200).json({request:'ok'})
       }
+      // }  else {
+      //   console.log('nomatch', element)
+      //
+      // }
     })
+    res.status(200).json({request:'ok'})
   })
 })
 
