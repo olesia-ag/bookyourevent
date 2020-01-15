@@ -24,11 +24,11 @@ form div {
   width: 50%;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 .icon {
-  font-family: 'Material Icons', serif;
+  font-family: "Material Icons", serif;
   font-style: normal;
   display: inline-block;
   vertical-align: middle;
@@ -42,7 +42,7 @@ form div {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'liga';
+  font-feature-settings: "liga";
 }
 
 /* VARIABLES */
@@ -63,7 +63,7 @@ form div {
 }
 
 body {
-  font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 1em;
   font-weight: 300;
   line-height: 1.5;
@@ -257,3 +257,4 @@ main {
   align-items: baseline;
   justify-content: space-around;
 }
+

@@ -5,7 +5,8 @@ import {
   withRouter,
   Route,
   Switch,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
@@ -14,7 +15,8 @@ import {
   UserHome,
   Calendar,
   Homepage,
-  BookForm
+  BookForm,
+  Form
 } from "./components";
 import { me } from "./store";
 
@@ -28,25 +30,26 @@ class Routes extends Component {
 
   render() {
     const { isLoggedIn } = this.props;
-console.log("routes rendered")
+    console.log("routes rendered");
     return (
       <Switch>
-        <Route exact path="/bookform" component={BookForm} />
-        <Route path="/" component={Homepage} />
+        <Route path="/bookform" component={BookForm} />
+        <Route exact path="/" component={Homepage} />
 
-        {/* Routes placed here are available to all visitors */}
-        {/* <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} /> */}
 
-        {/* {isLoggedIn && (
-          <Switch>
-            {/* Routes placed here are only available after logging in */}
-        {/* <Route path="/home" component={UserHome} />
-          </Switch> */}
-
-        {/* Displays our Login component as a fallback */}
-        {/* <Route component={Login} /> */}
       </Switch>
+      //{/* Routes placed here are available to all visitors */}
+      // {/* <Route path="/login" component={Login} />
+      // <Route path="/signup" component={Signup} /> */}
+
+      // {/* {isLoggedIn && (
+
+      //  {/* Routes placed here are only available after logging in */}
+      // {/* <Route path="/home" component={UserHome} />
+      //   </Switch> */}
+
+      //  {/* Displays our Login component as a fallback */}
+      //  {/* <Route component={Login} /> */}
     );
   }
 }
@@ -73,7 +76,8 @@ const mapDispatch = dispatch => {
 // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes
 // export default withRouter(connect(mapState, mapDispatch)(Routes));
-export default withRouter(Routes)
+export default withRouter(Routes);
+
 
 /**
  * PROP TYPES
