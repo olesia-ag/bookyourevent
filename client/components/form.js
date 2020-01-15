@@ -1,8 +1,9 @@
 import React from "react";
 import { checkDate } from "../store/calendar";
 import { connect } from "react-redux";
-import { Link, Router } from "react-router-dom";
-import Routes from "../routes";
+import { Link, withRouter } from "react-router-dom";
+
+
 
 let beenCalled = React.createContext(false);
 
@@ -20,7 +21,7 @@ class Form extends React.Component {
   }
 
   printAvailability() {
-    console.log("print availability was called")
+    console.log("print availability was called");
     if (beenCalled === true) {
       if (this.props.isAvailable === true) {
         return (
@@ -28,8 +29,8 @@ class Form extends React.Component {
             <div>{this.props.checkedDate.toUTCString().slice(0, 16)}</div>
             <p>is available! </p>
             <Link to="/bookform">
-                <button type="submit">book the date</button>
-                </Link>
+              <button type="submit">book the date</button>
+            </Link>
           </div>
         );
       } else {
@@ -79,4 +80,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Form));
