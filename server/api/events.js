@@ -8,18 +8,19 @@ moment().format();
 router.post("/", async (req, res) => {
   try {
     const newEvent = await Event.create(req.body);
-    Venue.findByPk(req.body.venueId).then(venue => {
-      let myDate = moment(req.body.date).format("YYYY-MM-DD");
-      let newString = myDate.toString();
+    let myDate = moment(req.body.date).format("YYYY-MM-DD");
+    Venue.findByPk(req.body.venueid).then(venue => {
+     console.log("venue id:", req.body.venueid)
+      // let newString = myDate.toString();
       venue.sequelize.query(
         `UPDATE Venues SET booked = '{${[
           ...venue.booked,
           myDate
         ]}}' WHERE id= ${venue.id}`
       );
-      // Venue.findByPk(req.body.venueId).then(ven => {
+      Venue.findByPk(req.body.venueid).then(ven => {
 
-      //   console.log("venue booked after query:", ven.booked)})
+        console.log("venue booked after query:", ven.booked)})
 
 
     });
