@@ -10,3 +10,4 @@ export { Login, Signup } from "./auth-form";
 
 export { default as BookForm } from "./book-form";
 export { default as Form } from "./form";
+export {default as Venue} from "./venue";

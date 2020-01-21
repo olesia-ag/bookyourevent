@@ -4,9 +4,6 @@ import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 
 
-
-
-
 class Form extends React.Component {
   constructor(props) {
     super(props);
