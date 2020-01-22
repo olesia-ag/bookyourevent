@@ -5,7 +5,7 @@ import { Router, Switch, Route} from "react-router-dom";
 import history from "./history";
 import store from "./store";
 import Homepage from "./components/homepage"
-import {BookForm, Form, Venue } from "./components";
+import {BookForm, Venue } from "./components";
 
 ReactDOM.render(
   <Provider store={store}>

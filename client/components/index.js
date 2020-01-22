@@ -6,8 +6,6 @@
 // export { default as Navbar } from "./navbar";
 export { default as UserHome } from "./user-home";
 export { Login, Signup } from "./auth-form";
-// export {default as Homepage} from "./homepage";
-
 export { default as BookForm } from "./book-form";
 export { default as Form } from "./form";
-export {default as Venue} from "./venue";
+export { default as Venue} from "./venue";

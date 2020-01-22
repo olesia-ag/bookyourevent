@@ -5,3 +5,5 @@ export const DATE_IS_AVAILABLE = "DATE_IS_AVAILABLE";
 export const DATE_IS_NOT_AVAILABLE = "DATE_IS_NOT_AVAILABLE";
 export const BOOK_DATE = "BOOK_DATE";
 export const BOOKED_DATE = "BOOKED_DATE";
+export const GOT_VENUE = "GOT_VENUE";
+export const GET_VENUE = "GET_VENUE";
