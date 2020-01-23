@@ -8,9 +8,9 @@ import {auth} from '../store'
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-
+console.log("auth form props", props)
   return (
-    <div>
+    <div className="login">
       <form onSubmit={handleSubmit} name={name}>
         <div>
           <label htmlFor="email">
@@ -29,7 +29,7 @@ const AuthForm = props => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
+
     </div>
   )
 }

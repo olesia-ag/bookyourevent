@@ -23,6 +23,7 @@ const renderDates = (dates) =>{
     return
   }
   else{
+    //make this a link to each specific event
     return dates.sort().map((date, index)=><td key={index}>{date}</td>)
   }
 
