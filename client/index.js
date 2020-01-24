@@ -6,7 +6,7 @@ import history from "./history";
 import store from "./store";
 import Homepage from "./components/homepage";
 import Navbar from "./components/navbar";
-import  {BookForm, SingleVenue, Venues, Login}  from "./components";
+import  {BookForm, SingleVenue, AllVenues, Login}  from "./components";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -15,7 +15,7 @@ ReactDOM.render(
       <Switch>
         <Route path="/bookform" component={BookForm} />
         <Route path="/singlevenue" component={SingleVenue} />
-        <Route path="/venues" components={Venues} />
+        <Route path="/allvenues" components={AllVenues} />
         <Route path="/login" component={Login} />
         <Route exact path="/" component={Homepage} />
       </Switch>

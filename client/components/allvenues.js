@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import { getAllVenues } from "../store/venue";
 
-const Venues = (props) => (<div>
+const AllVenues = (props) => (
+<div>
   <h1>hello world</h1>
 </div>);
 
@@ -23,4 +24,5 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Venues));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AllVenues));
+
