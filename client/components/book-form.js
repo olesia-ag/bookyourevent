@@ -7,12 +7,12 @@ class BookForm extends React.Component {
 
   handleSubmit = (event)=> {
     event.preventDefault()
-    console.log("handlesubmit")
+    // console.log("handlesubmit")
     this.props.bookDate(this.props.checkedDate);
   };
 
   render() {
-    console.log("book form props", this.props);
+    // console.log("book form props", this.props);
     return (
       <div className="form">
         <h3>Date: {this.props.checkedDate.toUTCString().slice(0, 16)} </h3>
@@ -29,7 +29,7 @@ class BookForm extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log("STATE in book form", state);
+  // console.log("STATE in book form", state);
   return {
     checkedDate: state.calendar.checkedDate,
     isAvailable: state.calendar.isAvailable

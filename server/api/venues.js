@@ -39,8 +39,8 @@ router.post("/isavailable", (req, res) => {
   });
 });
 
-router.get("/venueId", (req, res) => {
-  Venue.findByPK(req.params.venueId).then(venue => {
+router.get("/:venueId", (req, res) => {
+  Venue.findByPk(req.params.venueId).then(venue => {
     res.json(venue);
   });
 });

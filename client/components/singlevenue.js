@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import { getVenue } from "../store/venue";
 
-const Venue = props => {
+const SingleVenue = props => {
   // const {name, displayName, handleSubmit, error} = props
 
   console.log("props", props);
@@ -23,6 +23,7 @@ const renderDates = (dates) =>{
     return
   }
   else{
+    //make this a link to each specific event
     return dates.sort().map((date, index)=><td key={index}>{date}</td>)
   }
 
@@ -71,4 +72,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Venue));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SingleVenue));

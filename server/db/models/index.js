@@ -1,7 +1,7 @@
 const {Venue} = require('./venue')
 const {Event} = require('./event')
 const {Client} = require('./client')
-
+const {User} = require ('./user')
 
 
 Venue.hasMany(Event, {constraints: false})
@@ -13,5 +13,6 @@ Client.belongsTo(Event, {constraints: false})
 module.exports = {
   Venue,
   Event,
-  Client
+  Client,
+  User
 }

@@ -7,3 +7,5 @@ export const BOOK_DATE = "BOOK_DATE";
 export const BOOKED_DATE = "BOOKED_DATE";
 export const GOT_VENUE = "GOT_VENUE";
 export const GET_VENUE = "GET_VENUE";
+export const GET_ALL_VENUES = "GET_ALL_VENUES";
+export const GOT_ALL_VENUES = "GOT_ALL_VENUES";

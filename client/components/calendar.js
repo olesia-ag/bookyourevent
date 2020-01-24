@@ -45,7 +45,7 @@ class Calendar extends React.Component {
           <span>{dateFns.format(this.state.currentMonth, dateFormat)}</span>
         </div>
         <div className="col col-end" onClick={this.nextMonth}>
-          <div className="icon">next month</div>
+          <div className="icon" >next month</div>
         </div>
       </div>
     );
