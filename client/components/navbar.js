@@ -4,37 +4,52 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../store";
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div className="navbar">
-    <header id="header-navbar"></header>
-    <nav>
-      {isLoggedIn ? (
-        <div className="navLinks">
-          {/* The navbar will show these links after you log in */}
 
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
+const Navbar = ({ handleClick, isLoggedIn, userName }) => {
+
+
+  return (
+    <div className="navbar">
+      <header id="header-navbar"></header>
+      <nav>
+     <div >
+        {isLoggedIn ? (
+          <div className="navLinks">
+            {/* The navbar will show these links after you log in */}
+
+           <Link to="/">Home</Link>
+            <Link to="/venues">Rooms view</Link>
+            <a href="#" onClick={handleClick}>
+              Logout
+            </a>
+            <p>Hello, {userName}! </p>
+
+          </div>
+        ) : (
+          <div>
+            {/* The navbar will show these links before you log in */}
+            <Link to="/">Home</Link>
+            <Link to="/login">Owner login</Link>
+            {/* <Link to="/signup">Sign Up</Link> */}
+          </div>
+        )}
+
         </div>
-      ) : (
-        <div className="navLinks">
-          {/* The navbar will show these links before you log in */}
-          <Link to="/">Home</Link>
-          <Link to="/login">Owner login</Link>
-          {/* <Link to="/signup">Sign Up</Link> */}
-        </div>
-      )}
-    </nav>
-  </div>
-);
+      </nav>
+    </div>
+  );
+
+}
 
 /**
  * CONTAINER
  */
 const mapState = state => {
+
   //if user id exists, isLoggedIn will resolve to true
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    userName: state.user.name
   };
 };
 
@@ -42,7 +57,8 @@ const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch(logout());
-    }
+    },
+
   };
 };
 
@@ -53,5 +69,6 @@ export default connect(mapState, mapDispatch)(Navbar);
  */
 Navbar.propTypes = {
   handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
+  userName:PropTypes.string
 };

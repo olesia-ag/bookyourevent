@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import { getVenue } from "../store/venue";
 
-const Venue = props => {
+const SingleVenue = props => {
   // const {name, displayName, handleSubmit, error} = props
 
   console.log("props", props);
@@ -72,4 +72,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Venue));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SingleVenue));
