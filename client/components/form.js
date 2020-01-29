@@ -20,8 +20,8 @@ class Form extends React.Component {
           <div>
             <div>{this.props.checkedDate.toUTCString().slice(5, 16)}</div>
             <p>is available! </p>
-            <Link to="/bookform">
-              <button type="submit">book the date</button>
+            <Link to="/submitrequest">
+              <button type="submit">submit request</button>
             </Link>
           </div>
         );

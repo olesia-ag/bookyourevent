@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {Venue, Client, Event, User} = require('../server/db/models')
+const {Venue, Client, Event, User, Request} = require('../server/db/models')
 const moment = require('moment')
 moment().format()
 
@@ -78,6 +78,35 @@ const users =[
   }
 ]
 
+
+const requests = [{
+  firstName: "Jane",
+  lastName: "DBieber",
+  email: "jane@yahoo.org",
+  date: new Date(2020, 5, 23),
+  numOfPeople: 5,
+  budget: 800
+},
+{
+  firstName: "John",
+  lastName: "Doe",
+  email: "me@yahoo.org",
+  date: new Date(),
+  numOfPeople: 300,
+  budget: 20000
+},
+
+{
+  firstName: "Leah",
+  lastName: "Smith",
+  email: "lea@yahoo.org",
+  date: new Date(2020,3,9),
+  numOfPeople: 30,
+  budget: 5000
+},
+
+
+]
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
@@ -94,6 +123,9 @@ async function seed() {
     }),
     users.map(user=>{
       return User.create(user)
+    }),
+    requests.map(request=>{
+      return Request.create(request)
     })
   )
 
