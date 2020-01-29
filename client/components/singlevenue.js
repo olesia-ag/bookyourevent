@@ -5,49 +5,34 @@ import { Link, withRouter } from "react-router-dom";
 import { getVenue } from "../store/venue";
 
 const SingleVenue = props => {
-  // const {name, displayName, handleSubmit, error} = props
+  console.log("props in single venue", props);
 
-  console.log("props", props);
+  // props.getVenue(1);
+  // const loadVenue =(id)=>{
+  //   if(props.venueId){
+  //     return
+  //   }
+  //   else{
+  //     props.getVenue(id)
+  //   }
+  // }
+  const renderDates = dates => {
+    if (!dates) {
+      return;
+    } else {
+      //make this a link to each specific event
+      return dates.sort().map((date, index) => <td key={index}>{date}</td>);
+    }
+  };
 
-    // props.getVenue(1);
-const loadVenue =(id)=>{
-  if(props.venueId){
-    return
-  }
-  else{
-    props.getVenue(id)
-  }
-}
-const renderDates = (dates) =>{
-  if(!dates){
-    return
-  }
-  else{
-    //make this a link to each specific event
-    return dates.sort().map((date, index)=><td key={index}>{date}</td>)
-  }
-
-}
-
-loadVenue(1)
+  // loadVenue(1)
   return (
     <div>
-      <table>
-        <thead>
-          <tr>
-            <td>Name:</td>
-            <td>Max Capacity:</td>
-            <td>Dates booked</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{props.venueName}</td>
-            <td>{props.venueMaxCapacity}</td>
-            {renderDates(props.venueBookedDates)}
-          </tr>
-        </tbody>
-      </table>
+      <div className="venues-row">
+        <div className="venues-cell">{props.name}</div>
+        <div className="venues-cell">{props.maxcapacity}</div>
+       <div className="venues-cell"> &nbsp; {renderDates(props.venueBookedDates)}</div>
+      </div>
     </div>
   );
 };
@@ -72,4 +57,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SingleVenue));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(SingleVenue)
+);

@@ -40,7 +40,7 @@ export default function(state = initialState, action) {
     case GOT_VENUE:
       return { ...state, venue: action.venue };
     case GOT_ALL_VENUES:
-      return {state, venues: action.venues};
+      return {...state, venues: action.venues};
     default:
       return state;
   }

@@ -2,9 +2,10 @@
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 .icon {
-  font-family: "Material Icons", serif;
-  font-style: normal;
+  /* font-family: "Material Icons", serif; */
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   display: inline-block;
+  font-size: 0.9em;
   vertical-align: middle;
   line-height: 1;
   text-transform: none;
@@ -28,6 +29,8 @@
   --border-color: #eee;
   --bg-color: #f9f9f9;
   --neutral-color: #fff;
+  --a-color: #77CBB9;
+  --a-active: #A7B9D6
 }
 
 /* GENERAL */
@@ -44,6 +47,21 @@ body {
   color: var(--text-color);
   background: var(--bg-color);
   position: relative;
+}
+
+.venues-header {
+  display: flex;
+  flex-direction: row;
+  text-shadow: #77CBB9 1px 0 10px;
+}
+.venues-row {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.venues-cell{
+  width: 33%;
 }
 
 .navbar {
@@ -78,14 +96,34 @@ body {
   justify-content: space-around;
 }
 
- .navLinks {
-   display: flex;
-   direction: row;
-   align-items: flex-end;
+.navLinks {
+  display: flex;
+  direction: row;
+  align-items: flex-end;
 }
 
-a {
+a:link {
   text-decoration: none;
+  font-weight: bold;
+  color: var(--a-color);
+
+}
+
+/* visited link */
+a:visited {
+  font-weight: bold;
+  color: var(--a-color);
+}
+
+/* mouse over link */
+a:hover {
+  color: var(--a-active)
+}
+
+/* selected link */
+a:active {
+  font-weight: bold;
+  color: var(--a-color);
 }
 
 label {
@@ -154,6 +192,7 @@ main {
 .col-end {
   justify-content: flex-end;
   text-align: right;
+
 }
 
 /* Calendar */
@@ -161,7 +200,7 @@ main {
 .calendar {
   display: block;
   position: relative;
-  width: 100%;
+  min-width: 500px;
   /* height: 50%; */
   background: var(--neutral-color);
   border: 1px solid var(--border-color);

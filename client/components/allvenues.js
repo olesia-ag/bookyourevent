@@ -2,19 +2,46 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import { getAllVenues } from "../store/venue";
+import { bookDate } from "../store/makebooking";
+import SingleVenue from "./singlevenue";
 
-const AllVenues = (props) => (
-<div>
-  <h1>hello world</h1>
-</div>);
+const AllVenues = props => {
+  const getVenues = venuesArr => {
+    if (venuesArr.length === 0) {
+      props.getAllVenues();
+    }
+  };
+  getVenues(props.venues);
+  return (
+    <div>
+    <header className="venues-header">
+      <div className="venues-cell">Name:</div>
+       <div className="venues-cell"> Max Capacity:</div>
+        <div className="venues-cell">Dates booked</div>
+    </header>
+            <div>
+               {props.venues.map((venue, ind) => (
+              <SingleVenue
+                id={venue.id}
+                name={venue.name}
+                maxcapacity={venue.maxcapacity}
+                key={ind}
+              />
+            ))}
+            </div>
 
+
+
+
+
+
+    </div>
+  );
+};
 const mapStateToProps = state => {
-console.log("state in venues", state)
+  console.log("state in all venues", state);
   return {
-    venueName: state.venue.venue.name,
-    venueId: state.venue.venue.id,
-    venueMaxCapacity: state.venue.venue.maxcapacity,
-    venueBookedDates: state.venue.venue.booked
+    venues: state.venue.venues
   };
 };
 
@@ -24,5 +51,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AllVenues));
-
+export default connect(mapStateToProps, mapDispatchToProps)(AllVenues);

@@ -12,7 +12,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Navbar />
-      {/* <AllVenues /> */}
+
       <Switch>
         <Route path="/bookform" component={BookForm} />
         <Route path="/singlevenue" component={SingleVenue} />
