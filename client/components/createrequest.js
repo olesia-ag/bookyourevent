@@ -1,18 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { createRequest, addRequest } from "../store/request";
 import Confirmation from "./confirmation";
 
-
 class CreateRequest extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.renderSubmitForm= this.renderSubmitForm.bind(this);
-
-  }
   handleSubmit = event => {
     event.preventDefault();
     let newRequest = {
@@ -25,16 +17,19 @@ class CreateRequest extends React.Component {
       comment: this.props.comment
     };
     this.props.createRequest(newRequest);
+    this.props.history.push({
+      pathname: "./confirmation",
+      state: { date: this.props.date }
+    });
   };
 
   handleChange = event => {
     this.props.addRequest(event.target.name, event.target.value);
   };
 
-
-  renderSubmitForm = (val) =>{
-    if(val===false){
-      return  <div className="form">
+  render() {
+    return (
+      <div className="form">
         <h3>Date: {this.props.date.toUTCString().slice(0, 16)} </h3>
         <form onSubmit={event => this.handleSubmit(event)}>
           <label htmlFor="firstName"> First Name *</label>
@@ -55,30 +50,13 @@ class CreateRequest extends React.Component {
           <input type="number" name="comment" onChange={this.handleChange} />
           <div>
             <input type="submit" value="Submit" />
-            {/* {error.response.data} */}
-            }
           </div>
         </form>
       </div>
-
-    }
-    else {
-      return  <Confirmation />
-    }
-  }
-
-  render() {
-
-    return (
-<div>
-  {this.renderSubmitForm(this.props.submitted)}
-</div>
     );
   }
 }
-
 const mapStateToProps = state => {
-  console.log("state in submit requet:", state)
   return {
     checkedDate: state.calendar.checkedDate,
     date: state.calendar.checkedDate,
@@ -99,4 +77,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateRequest);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(CreateRequest)
+);

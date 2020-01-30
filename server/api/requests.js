@@ -21,14 +21,15 @@ router.get("/", async (req, res) => {
     ) {
       res.status(400).json({ error: "sortBy parameter is invalid" });
     }
+    else if (!sortBy) {
+      sortBy = "createdAt";
+    }
     let direction = req.query.direction;
     if (direction && direction !== "asc" && direction !== "desc") {
       res.status(400).json({ error: "direction parameter is invalid" });
     }
     const requests = await Request.findAll();
-    if (!sortBy) {
-      sortBy = "createdAt";
-    }
+
     if (direction === "asc") {
       requests.sort((a, b) => a[sortBy] - b[sortBy]);
     } else {
@@ -49,7 +50,6 @@ router.post("/", async (req, res) => {
     const newRequest = await Request.create(req.body);
     res.json({value: "success"});
   } catch (error) {
-    console.log(error)
     res.send(error);
   }
 });

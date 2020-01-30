@@ -14,7 +14,6 @@ class Form extends React.Component {
 
 
   printAvailability() {
-    console.log("print availability was called");
       if (this.props.isAvailable === true) {
         return (
           <div>

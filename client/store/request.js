@@ -22,7 +22,6 @@ const addedRequest = (name, value) => ({ type: ADDED_REQUEST, name, value});
 export const createRequest = request => async dispatch => {
   try {
     const res = await axios.post("/api/requests", request);
-    console.log('res data', res.data)
     if(res.data.value==="success"){
       dispatch(createdRequest());
     }
