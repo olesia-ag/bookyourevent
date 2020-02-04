@@ -14,32 +14,25 @@ const AllVenues = props => {
   getVenues(props.venues);
   return (
     <div>
-    <header className="venues-header">
-      <div className="venues-cell">Name:</div>
-       <div className="venues-cell"> Max Capacity:</div>
+      <header className="venues-header">
+        <div className="venues-cell">Name:</div>
+        <div className="venues-cell"> Max Capacity:</div>
         <div className="venues-cell">Dates booked</div>
-    </header>
-            <div>
-               {props.venues.map((venue, ind) => (
-              <SingleVenue
-                id={venue.id}
-                name={venue.name}
-                maxcapacity={venue.maxcapacity}
-                key={ind}
-              />
-            ))}
-            </div>
-
-
-
-
-
-
+      </header>
+      <div>
+        {props.venues.map((venue, ind) => (
+          <SingleVenue
+            id={venue.id}
+            name={venue.name}
+            maxcapacity={venue.maxcapacity}
+            key={ind}
+          />
+        ))}
+      </div>
     </div>
   );
 };
 const mapStateToProps = state => {
-  console.log("state in all venues", state);
   return {
     venues: state.venue.venues
   };

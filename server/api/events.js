@@ -4,7 +4,7 @@ const moment = require("moment");
 moment().format();
 
 //the route to create a new event in events table and add the date to the array of booked dates in venue table
-//need to mofify the route so that date will be put in order
+//need to modify the route so that date will be put in order
 router.post("/", async (req, res) => {
   try {
     const newEvent = await Event.create(req.body);

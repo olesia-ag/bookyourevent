@@ -35,12 +35,11 @@ router.get("/", async (req, res) => {
     } else {
       requests.sort((a, b) => b[sortBy] - a[sortBy]);
     }
-    res.status(200).json({ requests: requests });
+    res.status(200).json(requests);
   } catch (err) {
     console.log(err);
   }
 });
-
 
 //creates new request in database
 

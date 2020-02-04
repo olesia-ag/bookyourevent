@@ -12,3 +12,4 @@ export { default as Form } from "./form";
 export { default as AllVenues } from "./allvenues";
 export { default as SingleVenue } from "./singlevenue";
 export {default as Confirmation } from "./confirmation";
+export { default as AllRequests } from "./allrequests";

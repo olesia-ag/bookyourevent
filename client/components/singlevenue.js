@@ -5,17 +5,9 @@ import { Link, withRouter } from "react-router-dom";
 import { getVenue } from "../store/venue";
 
 const SingleVenue = props => {
-  console.log("props in single venue", props);
 
-  // props.getVenue(1);
-  // const loadVenue =(id)=>{
-  //   if(props.venueId){
-  //     return
-  //   }
-  //   else{
-  //     props.getVenue(id)
-  //   }
-  // }
+
+
   const renderDates = dates => {
     if (!dates) {
       return;
@@ -25,7 +17,7 @@ const SingleVenue = props => {
     }
   };
 
-  // loadVenue(1)
+
   return (
     <div>
       <div className="venues-row">
