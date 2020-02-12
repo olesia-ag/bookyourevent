@@ -10,5 +10,5 @@
 * Webpack is used for an app bundler
 
 # Demo
-book-your-event.herokuapp.com
+
 [Book Your Event](http://book-your-event.herokuapp.com/)
