@@ -15,8 +15,6 @@ const Venue = db.define('venue', {
   }
 })
 
-
-
 module.exports = {Venue}
 
 // /**

@@ -14,12 +14,11 @@ router.post("/", async (req, res) => {
       // let newString = myDate.toString();
       venue.sequelize.query(
         `UPDATE Venues SET booked = '{${[
-          ...venue.booked,
+          venue.booked,
           myDate
         ]}}' WHERE id= ${venue.id}`
       );
-      // Venue.findByPk(req.body.venueid).then(ven => {
-      //   console.log("venue booked after query:", ven.booked)})
+
     });
     res.json(newEvent);
   } catch (error) {
