@@ -1,17 +1,18 @@
-import { CREATED_REQUEST, ADDED_REQUEST } from "./constants";
+import { CREATED_REQUEST, ADDED_REQUEST, BAD_REQUEST } from "./constants";
 import axios from "axios";
 
 const initialState = {
-  firstName: "",
-  lastName: "",
+  firstName: null,
+  lastName: null,
   budget: -1,
-  numOfPeople: 0,
+  numOfPeople: null,
   comment: "",
-  submitted: false
+  submitted: false,
+  errors: []
 };
 //action creators
 const createdRequest = () => ({ type: CREATED_REQUEST });
-
+const madeBadRequest = _err => ({ type: BAD_REQUEST, _err });
 const addedRequest = (name, value) => ({ type: ADDED_REQUEST, name, value });
 
 export const createRequest = request => async dispatch => {
@@ -19,8 +20,8 @@ export const createRequest = request => async dispatch => {
     const res = await axios.post("/api/requests", request);
     if (res.data.value === "success") {
       dispatch(createdRequest());
-    } else if (res.data.name === "SequelizeUniqueConstraintError") {
-      return "Already submitted with your email";
+    } else {
+      dispatch(madeBadRequest(res.data.errors));
     }
   } catch (err) {
     console.error(err);
@@ -38,6 +39,8 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case CREATED_REQUEST:
       return { ...state, submitted: true };
+    case BAD_REQUEST:
+      return { ...state, errors: [...action._err] };
     case ADDED_REQUEST:
       return {
         ...state,

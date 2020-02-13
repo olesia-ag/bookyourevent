@@ -17,10 +17,31 @@ class CreateRequest extends React.Component {
       comment: this.props.comment
     };
     this.props.createRequest(newRequest);
-    this.props.history.push({
-      pathname: "./confirmation",
-      state: { date: this.props.date }
-    });
+
+};
+
+  displayError = arr => {
+    if (arr.length >= 0) {
+      return arr.map((elem, ind) => {
+        if (elem.message === "request.firstName cannot be null") {
+          return <p key={ind}>first name is required </p>;
+        } else if (elem.message === "request.lastName cannot be null") {
+          return <p key={ind}>last name is required </p>;
+        } else if (elem.message === "request.email cannot be null") {
+          return <p key={ind}>email is required </p>;
+        } else if (elem.message === "request.numOfPeople cannot be null") {
+          return <p key={ind}>number of people is required </p>;
+        } else if (elem.message === "email must be unique") {
+          return (
+            <p key={ind}>
+              looks like you already submitted request with this email address
+            </p>
+          );
+        } else {
+          return <p>Something went wrong. Please try again.</p>;
+        }
+      });
+    }
   };
 
   handleChange = event => {
@@ -28,6 +49,13 @@ class CreateRequest extends React.Component {
   };
 
   render() {
+    if (this.props.submitted===true) {
+      return <Redirect to={{
+              pathname: "./confirmation",
+              state: { date: this.props.date,
+              submitted: this.props.submitted }
+             }} />;
+    }
     return (
       <div className="form">
         <h3>Date: {this.props.date.toUTCString().slice(0, 16)} </h3>
@@ -52,11 +80,13 @@ class CreateRequest extends React.Component {
             <input type="submit" value="Submit" />
           </div>
         </form>
+        {this.displayError(this.props.errors)}
       </div>
     );
   }
 }
 const mapStateToProps = state => {
+  console.log("STATE", state);
   return {
     checkedDate: state.calendar.checkedDate,
     date: state.calendar.checkedDate,
@@ -66,7 +96,8 @@ const mapStateToProps = state => {
     budget: state.request.budget,
     numOfPeople: state.request.numOfPeople,
     comment: state.request.comment,
-    submitted: state.request.submitted
+    submitted: state.request.submitted,
+    errors: state.request.errors
   };
 };
 

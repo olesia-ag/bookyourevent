@@ -12,3 +12,4 @@ export const GOT_ALL_VENUES = "GOT_ALL_VENUES";
 export const CREATED_REQUEST = "CREATED_REQUEST";
 export const ADDED_REQUEST = "ADDED_REQUEST";
 export const GOT_ALL_REQUESTS = "GOT_ALL_REQUESTS";
+export const BAD_REQUEST = "BAD_REQUEST";
