@@ -8,7 +8,7 @@ import {auth} from '../store'
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-// console.log("auth form props", props)
+
   return (
     <div className="login">
       <div style={{padding: 20}}><p>for testing please use following credentials: <br></br>

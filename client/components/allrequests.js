@@ -19,7 +19,7 @@ const AllRequests = props => {
     });
 
     if (direction === "asc") {
-      console.log("went to asc");
+
       newArr.sort((a, b) => {
         return a[sortBy] - b[sortBy];
       });
@@ -28,7 +28,7 @@ const AllRequests = props => {
         return b[sortBy] - a[sortBy];
       });
     }
-    console.log(newArr, "after sort");
+
     let finalArr = newArr.map(elem => {
       return { ...elem, date: moment.utc(elem.date).format("YYYY-MM-DD"), createdAt: moment.utc(elem.createdAt).format("YYYY-MM-DD") };
     });

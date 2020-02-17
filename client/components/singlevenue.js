@@ -30,12 +30,9 @@ const SingleVenue = props => {
 };
 
 const mapStateToProps = state => {
-  console.log("state in venue", state);
+
   return {
-    // currentMonth: state.calendar.currentMonth,
-    // selectedDate: state.calendar.selectedDate,
-    // isAvailable: state.calendar.isAvailable,
-    // checkedDate: state.calendar.checkedDate,
+
     venueName: state.venue.venue.name,
     venueId: state.venue.venue.id,
     venueMaxCapacity: state.venue.venue.maxcapacity,

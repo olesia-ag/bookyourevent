@@ -44,7 +44,7 @@ router.get("/", async (req, res) => {
 //creates new request in database
 
 router.post("/", async (req, res) => {
-  console.log("went to post route", req.body)
+
   try {
     const newRequest = await Request.create(req.body);
     res.json({value: "success"});
@@ -52,6 +52,10 @@ router.post("/", async (req, res) => {
     res.send(error);
   }
 });
+
+router.delete("/:id", async (req,res) => {
+
+})
 
 
 module.exports = router;

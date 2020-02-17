@@ -54,12 +54,9 @@ class Form extends React.Component {
         <button type="submit" onClick={this.getAvailability}>
           check availabity
         </button>
-        {/* <Link to="/bookform">
-          <button type="button">Secure the date</button>
-        </Link> */}
 
         <div>{this.printAvailability()}</div>
-        {console.log(this.props.isAvailable)}
+
       </div>
     );
   }
